@@ -36,9 +36,19 @@
                 }
             }
         }
-        const playerSelection = prompt("Rock/Paper/Scissors","Rock");
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection,computerSelection));
+        function playerChoice(){
+            return prompt("Rock/Paper/Scissors","Rock");
+        }
+
+        function game(){
+            const numberOfGame = prompt('How many times want to play','5');
+            for (let i = 0; i < numberOfGame;i++ ){
+                const playerSelection = playerChoice();
+                const computerSelection = computerPlay();
+                console.log(playRound(playerSelection,computerSelection));
+            }
+        }
+        game();
     </script>
 </body>
 </html>
