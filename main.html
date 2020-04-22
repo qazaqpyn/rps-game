@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlay(){
+            let cases = ["Rock","Paper","Scissors"];
+            const randomCase = cases[Math.floor(Math.random()*cases.length)];
+            return randomCase
+        }
+
+        function playRound(playerSelection,computerSelection){
+            if (playerSelection.toLowerCase() == computerSelection.toLowerCase()) {
+                return `it is draw. you got the same`;
+            } else if (playerSelection.toLowerCase() == "rock"){
+                if (computerSelection.toLowerCase()=='scissors'){
+                    return 'you won: rock > scissors';
+                }else {
+                    return 'you lose: rock < paper';
+                }
+            }else if (playerSelection.toLowerCase()=='paper'){
+                if (computerSelection.toLowerCase()=='rock'){
+                    return 'you won: paper > rock';
+                } else {
+                    return 'you lost: paper < scissors';
+                }
+            }else {
+                if (computerSelection.toLowerCase()=='paper'){
+                    return 'you won: scissors > paper';
+                }else {
+                    return 'you lost: scissors < rock'
+                }
+            }
+        }
+        const playerSelection = prompt("Rock/Paper/Scissors","Rock");
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection,computerSelection));
+    </script>
+</body>
+</html>
