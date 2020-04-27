@@ -1,0 +1,79 @@
+html {
+    background: url(./images/background.jpeg);
+    background-size: cover;
+    font-size: 15px;
+    font-family: 'Special Elite', cursive;
+    text-shadow: 0 0 .5rem rgb(255, 255, 255);
+}
+
+#head, h2  {
+    text-align: center;
+}
+#head {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3rem;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    outline:none;
+    border: 1px solid rgb(211, 211, 211);
+    font-size: 1.2rem;
+}
+
+button:hover {
+    border: 1px solid rgb(177, 175, 175);
+    transform: scale(1.1);
+    box-shadow: 0 0 1rem rgb(177, 175, 175);
+}
+
+h3 {
+    position: relative;
+    left: 30vw;
+    top: 3vh;
+    font-size: 2rem;
+}
+
+
+
+.results {
+    position: absolute;
+    left: 43vw;
+    top: 33vh;
+    font-size: 1.3rem;
+
+}
+
+.buttons {
+    position: absolute;
+    top: 75vh;
+    margin-left: 13vw;
+}
+.buttons button {
+    margin-left: 2rem;
+    padding: 1rem 10vw 1rem 10vw;
+}
+#scissors {
+    margin-right: 0;
+}
+#rock {
+    margin-left: 0;
+}
+#reset {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    padding: 3rem;
+}
+
+#final {
+    font-size: 4rem;
+    position: absolute;
+    top: 82vh;
+    left: 25vw;
+    box-sizing: border-box;
+}
