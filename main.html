@@ -6,7 +6,111 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>RPS game</h1>
+    <h2>ROUND: 
+        <span>0</span>
+    </h2>
+    <div class="results">
+
+    </div>
+    <div class="final">
+        <p id="final"></p>
+    </div >
+    <div class="buttons">
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    </div>
+    <div>
+        <button id="reset">reset</button>
+    </div>
     <script>
+        const rock = document.querySelector('#rock');
+        const paper = document.querySelector('#paper');
+        const scissors = document.querySelector('#scissors');
+        const resultsDiv = document.querySelector('.results');
+        const btns = document.querySelectorAll('.buttons');
+        const finalDiv = document.querySelector('.final');
+        const finalP = document.querySelector('#final');
+        let numberGame = 0;
+        let winGame = 0;
+        const reset = document.querySelector('#reset');
+
+        reset.addEventListener('click',function(){
+            numberGame = 0;
+            winGame = 0;
+            const round = document.querySelector('span');
+            round.textContent = `0`;
+            finalP.textContent ='';
+            for (let i =0;i<5;i++) {
+                const resultss = document.querySelector('.results p');
+                resultsDiv.removeChild(resultss);
+            }
+            
+
+        });
+
+        rock.addEventListener('click',function(){
+            if (numberGame > 4) {
+                return;
+            }
+            const results = document.createElement('p');
+            const computerSelection = computerPlay();
+            let result = playRound('rock',computerSelection);
+            results.textContent = result; 
+            resultsDiv.appendChild(results);
+            if (result.includes("won")){
+                    winGame++;
+                }
+           
+        });
+
+        paper.addEventListener('click', function(){
+            if (numberGame > 4) {
+                return;
+            }
+            const results = document.createElement('p');
+            const computerSelection = computerPlay();
+            let result = playRound('paper',computerSelection);
+            results.textContent = result; 
+            resultsDiv.appendChild(results);
+            if (result.includes("won")){
+                    winGame++;
+                }
+           
+        });
+
+        scissors.addEventListener('click',function() {
+            if (numberGame > 4) {
+                return;
+            }
+            const results = document.createElement('p');
+            const computerSelection = computerPlay();
+            let result = playRound('scissors',computerSelection);
+            results.textContent = result; 
+            resultsDiv.appendChild(results);
+            if (result.includes("won")){
+                    winGame++;
+                }
+        });
+
+        btns.forEach ((button) => {
+            button.addEventListener('click',function () {
+                numberGame++;
+                const round = document.querySelector('span');
+                round.textContent = `${numberGame}`;
+                if (numberGame > 4) {
+                    if (winGame > (numberGame/2)){
+                        finalP.textContent = `You won the battle | ${winGame}/${numberGame}`;
+                        return;
+                    } else {
+                        finalP.textContent = `You lost the battle | ${winGame}/${numberGame}`;
+                        return;
+                    }   
+                }
+            });
+        });
+
         function computerPlay(){
             let cases = ["Rock","Paper","Scissors"];
             const randomCase = cases[Math.floor(Math.random()*cases.length)];
@@ -36,31 +140,6 @@
                 }
             }
         }
-        function playerChoice(){
-            return prompt("Rock/Paper/Scissors","Rock");
-        }
-
-        function game(){
-            const numberOfGame = prompt('How many times want to play','5');
-            let winGame = 0;
-            for (let i = 0; i < numberOfGame;i++ ){
-                const playerSelection = playerChoice();
-                const computerSelection = computerPlay();
-                let result = playRound(playerSelection,computerSelection);
-                console.log(result);
-                if (result.includes("won")){
-                    winGame++;
-                }
-            }
-            console.log(winGame);
-            if (winGame > (numberOfGame/2)){
-                console.log(`You won the battle | ${winGame}/${numberOfGame}`);
-            } else {
-                console.log(`You lost the battle | ${winGame}/${numberOfGame}`);
-            }
-        }
-
-        game();
     </script>
 </body>
 </html>
